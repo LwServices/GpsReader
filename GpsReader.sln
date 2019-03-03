@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleGpsReader", "ConsoleGpsReader\ConsoleGpsReader.csproj", "{D6CB4613-7179-4BBF-8464-6F742CF9D916}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6CB4613-7179-4BBF-8464-6F742CF9D916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6CB4613-7179-4BBF-8464-6F742CF9D916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6CB4613-7179-4BBF-8464-6F742CF9D916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6CB4613-7179-4BBF-8464-6F742CF9D916}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F71D001-CF17-4562-A2FC-2A93EEFD0026}
+	EndGlobalSection
+EndGlobal
