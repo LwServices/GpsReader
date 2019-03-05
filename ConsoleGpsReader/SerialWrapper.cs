@@ -2,6 +2,7 @@
 using NmeaParser.Nmea.Gps;
 using System;
 using System.IO.Ports;
+using System.Runtime.InteropServices;
 
 namespace ConsoleGpsReader
 {
@@ -30,7 +31,8 @@ namespace ConsoleGpsReader
         public bool InitPort(string portName, int baudRate)
         {
             _serialPort = new SerialPort(portName, baudRate);
-            return _serialPort.IsOpen;
+            //_serialPort.Open();
+            return _serialPort != null;
         }
 
         public bool InitGps()
@@ -45,25 +47,32 @@ namespace ConsoleGpsReader
         private void DeviceOnMessageReceived(object sender, NmeaMessageReceivedEventArgs e)
 
         {
-            if (e.Message is Gpgsa gpgsa)
+            switch (e.Message)
             {
-                Console.WriteLine(gpgsa.GpsMode);
+                case Gpgsa gpgsa:
+                    Console.WriteLine(gpgsa.GpsMode);
+                    return;
+
+                case Gpgll gpgll:
+                    Console.WriteLine(gpgll.FixTime);
+                    return;
+
+                case Gprmc gprmc:
+                    Console.WriteLine(gprmc.Course);
+                    return;
+
+                case Gpgga gpgga:
+                    Console.WriteLine(gpgga.Hdop);
+                    return;
+
+                case Gpgsv gpgsv:
+                    Console.WriteLine(gpgsv.SVsInView);
+                    return;
             }
 
-            if (e.Message is Gpgll gpgll)
-            {
-                Console.WriteLine(gpgll.FixTime);
-            }
-
-            if (e.Message is Gprmc gprmc)
-            {
-                Console.WriteLine(gprmc.Course);
-            }
-
-            if (e.Message is Gpgga gpgga)
-            {
-                Console.WriteLine(gpgga.Hdop);
-            }
+            var msg = e.Message;
+            Console.WriteLine($"Type of : {msg.GetType()}");
+            //Console.ReadKey();
         }
     }
 }
